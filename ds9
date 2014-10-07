@@ -1,4 +1,6 @@
-#!/bin/bash                                                                     
+#!/bin/bash    
+# this may help fix the XPA error some users get (also add your hostname in /etc/hosts for 127.0.0.1)
+export XPA_METHOD=local
 get_abs_filename() {
       # $1 : relative filename
       # From StackOverflow but the quotes are oddball, don't ask me.

@@ -1,25 +1,4 @@
-#!/bin/bash                                                                     
-get_abs_filename() {
-      # $1 : relative filename
-      # From StackOverflow but the quotes are oddball, don't ask me.
-        echo "$(cd "$(dirname "$1")" && pwd)/$(basename "$1")"
-    }
-
-args=()
-for arg in "$@"; do
-    # when passing filenames via --args of the open command, they need to
-    # have the full path rather than local relative path. So process all
-    # arguments, if they are a filename (as defined by [ -f ]), then get their
-    # full path.
-    if [ -f "${arg}" ]
-    then
-        args+=($(get_abs_filename "${arg}"))
-    else
-        args+=(${arg})
-    fi
-done
-# Use open -n to force a new instance of SAOImage DS9.app 
-# (default command-line behaviour of the X11 version)
-# Use open -a to specify the application, to let us access it from anywhere 
-# (doesn't assume it's in /Applications/)
-open -na SAOImage\ DS9.app --args ${args[*]}
+#!/bin/bash
+# Note: can't use symlink because it will change @executable_path 
+# and ds9 won't be able to find its Frameworks
+/Applications/SAOImage\ DS9.app/Contents/MacOS/ds9 $@

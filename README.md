@@ -18,5 +18,6 @@ Copy the **ds9** bash script to any directory in your **PATH** environment varia
 Issues
 ------
 Some folks get the following warning message when starting DS9. 
+
     XPA unable to verify hostname, setting XPA_METHOD to LOCAL
 This seems to happen more commonly to OSX users and probably involves the (I'm sure extremely fool-proof, sophisticated) method XPA uses to determine whether the computer can be reached over the network. It is harmless to almost all users because very few people use XPA to manipulate DS9 sessions over a network (local connections, e.g. from IRAF, will still work). See [this comment](https://github.com/mmechtley/OSX-DS9-Shell/pull/1#issuecomment-58487979) for a more detailed discussion and a list of workarounds that supress the warning (but don't fix the problem).
